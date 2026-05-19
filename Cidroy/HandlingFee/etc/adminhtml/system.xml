@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cidroy" translate="label" sortOrder="400">
+            <label>Cidroy</label>
+        </tab>
+        <section id="handling_fee" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <tab>cidroy</tab>
+            <label>Handling Fee</label>
+            <resource>Cidroy_HandlingFee::config</resource>
+            <group id="general" translate="label" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="enable_log" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Log</label>
+                    <comment>Logs will be written to var/log/handling_fee.log</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="label" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Label</label>
+                    <comment>Displayed as the fee name on frontend and backend.</comment>
+                </field>
+                <field id="fee_percent" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Handling Fee %</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Percentage of order total to apply as handling fee.</comment>
+                </field>
+                <field id="exceed_limit" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Exceed Limit</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Orders above this amount will not be charged a handling fee.</comment>
+                </field>
+                <field id="restricted_customer_groups" translate="label" type="multiselect" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Restricted Customer Groups</label>
+                    <source_model>Magento\Customer\Model\Config\Source\Group\Multiselect</source_model>
+                    <comment>Selected groups will not be charged a handling fee.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

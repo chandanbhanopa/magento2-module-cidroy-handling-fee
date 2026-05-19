@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <!--
+            Magento_Sales adds order.info.totals (Magento\Sales\Block\Order\Totals)
+            to the success page. Our block calls initTotals() and inserts the fee
+            line before grand_total.
+        -->
+        <referenceBlock name="order.info.totals">
+            <block class="Cidroy\HandlingFee\Block\Order\Totals\HandlingFee"
+                   name="cidroy.handling_fee.success.totals"/>
+        </referenceBlock>
+    </body>
+</page>

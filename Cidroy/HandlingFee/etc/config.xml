@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <handling_fee>
+            <general>
+                <enabled>0</enabled>
+                <enable_log>0</enable_log>
+                <label>Handling Fee</label>
+                <fee_percent>7</fee_percent>
+                <exceed_limit>50000</exceed_limit>
+                <restricted_customer_groups></restricted_customer_groups>
+            </general>
+        </handling_fee>
+    </default>
+</config>

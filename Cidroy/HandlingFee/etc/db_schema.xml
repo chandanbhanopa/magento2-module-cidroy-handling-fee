@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote" resource="default" engine="innodb">
+        <column xsi:type="decimal" name="handling_fee" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="Handling Fee"/>
+        <column xsi:type="decimal" name="base_handling_fee" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="Base Handling Fee"/>
+    </table>
+    <table name="quote_address" resource="default" engine="innodb">
+        <column xsi:type="decimal" name="handling_fee" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="Handling Fee"/>
+        <column xsi:type="decimal" name="base_handling_fee" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="Base Handling Fee"/>
+    </table>
+    <table name="sales_order" resource="sales" engine="innodb">
+        <column xsi:type="decimal" name="handling_fee" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="Handling Fee"/>
+        <column xsi:type="decimal" name="base_handling_fee" scale="4" precision="20" unsigned="false" nullable="true"
+                comment="Base Handling Fee"/>
+    </table>
+</schema>

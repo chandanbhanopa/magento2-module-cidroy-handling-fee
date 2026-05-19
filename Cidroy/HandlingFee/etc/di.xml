@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Cidroy\HandlingFee\Logger\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">handling_fee</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Cidroy\HandlingFee\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\CustomerData\Cart">
+        <plugin name="cidroy_handling_fee_cart_data"
+                type="Cidroy\HandlingFee\Plugin\CustomerData\CartPlugin"/>
+    </type>
+    <type name="Magento\Checkout\Model\Cart">
+        <plugin name="cidroy_handling_fee_cart_save"
+                type="Cidroy\HandlingFee\Plugin\CustomerData\CartPlugin"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Sidebar">
+        <plugin name="cidroy_handling_fee_minicart_title"
+                type="Cidroy\HandlingFee\Plugin\Block\Cart\SidebarPlugin"/>
+    </type>
+    <type name="Magento\Checkout\Block\Cart\Totals">
+        <plugin name="cidroy_handling_fee_cart_totals_title"
+                type="Cidroy\HandlingFee\Plugin\Block\Cart\TotalsPlugin"/>
+    </type>
+</config>

@@ -1,0 +1,54 @@
+<?php
+/** @var \Cidroy\HandlingFee\Block\Checkout\Success\OrderSummary $block */
+$order = $block->getOrder();
+if (!$order) {
+    return;
+}
+
+$handlingFee = (float) $order->getHandlingFee();
+?>
+<div class="cidroy-order-summary" style="margin-top:2rem;">
+    <h3><?= $block->escapeHtml(__('Order Summary')) ?></h3>
+    <table class="data table table-order-items" style="width:100%;border-collapse:collapse;">
+        <thead>
+            <tr>
+                <th style="text-align:left;padding:8px 12px;border-bottom:2px solid #ccc;"><?= $block->escapeHtml(__('Description')) ?></th>
+                <th style="text-align:right;padding:8px 12px;border-bottom:2px solid #ccc;"><?= $block->escapeHtml(__('Amount')) ?></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml(__('Subtotal')) ?></td>
+                <td style="text-align:right;padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml($block->formatPrice((float) $order->getSubtotal())) ?></td>
+            </tr>
+            <?php if ((float) $order->getDiscountAmount() != 0): ?>
+            <tr>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml(__('Discount')) ?></td>
+                <td style="text-align:right;padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml($block->formatPrice((float) $order->getDiscountAmount())) ?></td>
+            </tr>
+            <?php endif; ?>
+            <tr>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml(__('Shipping & Handling')) ?></td>
+                <td style="text-align:right;padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml($block->formatPrice((float) $order->getShippingAmount())) ?></td>
+            </tr>
+            <?php if ($handlingFee > 0): ?>
+            <tr>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml($block->getHandlingFeeLabel()) ?></td>
+                <td style="text-align:right;padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml($block->formatPrice($handlingFee)) ?></td>
+            </tr>
+            <?php endif; ?>
+            <?php if ((float) $order->getTaxAmount() > 0): ?>
+            <tr>
+                <td style="padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml(__('Tax')) ?></td>
+                <td style="text-align:right;padding:8px 12px;border-bottom:1px solid #eee;"><?= $block->escapeHtml($block->formatPrice((float) $order->getTaxAmount())) ?></td>
+            </tr>
+            <?php endif; ?>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th style="text-align:left;padding:10px 12px;border-top:2px solid #ccc;"><strong><?= $block->escapeHtml(__('Grand Total')) ?></strong></th>
+                <td style="text-align:right;padding:10px 12px;border-top:2px solid #ccc;"><strong><?= $block->escapeHtml($block->formatPrice((float) $order->getGrandTotal())) ?></strong></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

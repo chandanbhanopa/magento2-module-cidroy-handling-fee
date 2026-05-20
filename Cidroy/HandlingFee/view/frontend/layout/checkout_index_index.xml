@@ -6,7 +6,7 @@
             Checkout sidebar summary totals.
             Path mirrors Magento_Tax/view/frontend/layout/checkout_index_index.xml.
         -->
-        <referenceBlock name="checkout">
+        <referenceBlock name="checkout.root">
             <arguments>
                 <argument name="jsLayout" xsi:type="array">
                     <item name="components" xsi:type="array">
@@ -19,8 +19,8 @@
                                                 <item name="totals" xsi:type="array">
                                                     <item name="children" xsi:type="array">
                                                         <item name="handling-fee" xsi:type="array">
+                                                            <item name="sortOrder" xsi:type="string">25</item>
                                                             <item name="component" xsi:type="string">Cidroy_HandlingFee/js/view/summary/handling-fee</item>
-                                                            <item name="sortOrder" xsi:type="string">45</item>
                                                             <item name="config" xsi:type="array">
                                                                 <item name="title" xsi:type="string" translate="true">Handling Fee</item>
                                                             </item>

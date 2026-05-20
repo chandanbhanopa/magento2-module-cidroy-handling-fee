@@ -1,10 +1,3 @@
-/**
- * Minicart handling-fee component.
- *
- * Does NOT load Magento_Checkout/js/model/quote — that module reads
- * window.checkoutConfig.quoteData which does not exist on non-checkout pages
- * and causes an uncaught TypeError. Cart customer-data is always available.
- */
 define([
     'uiComponent',
     'Magento_Customer/js/customer-data',
@@ -32,7 +25,7 @@ define([
         },
 
         getValue: function () {
-            return this.cart()['handling_fee'] || '';
+            return this.cart()['handling_fee_formatted'] || '';
         }
     });
 });

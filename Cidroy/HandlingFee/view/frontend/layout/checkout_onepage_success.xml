@@ -2,14 +2,16 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <!--
-            Magento_Sales adds order.info.totals (Magento\Sales\Block\Order\Totals)
-            to the success page. Our block calls initTotals() and inserts the fee
-            line before grand_total.
-        -->
         <referenceBlock name="order.info.totals">
             <block class="Cidroy\HandlingFee\Block\Order\Totals\HandlingFee"
                    name="cidroy.handling_fee.success.totals"/>
         </referenceBlock>
+
+        <referenceContainer name="order.success.additional.info">
+            <block class="Cidroy\HandlingFee\Block\Checkout\Success\OrderSummary"
+                   name="cidroy.handling_fee.success.summary"
+                   template="Cidroy_HandlingFee::checkout/success/order-summary.phtml"
+                   cacheable="false"/>
+        </referenceContainer>
     </body>
 </page>

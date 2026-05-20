@@ -24,10 +24,11 @@ class HandlingFee extends AbstractBlock
      */
     public function initTotals(): static
     {
+        
         $parent = $this->getParentBlock();
         $order  = $parent->getOrder();
         $fee    = (float) $order->getHandlingFee();
-
+        
         if ($fee <= 0) {
             return $this;
         }
@@ -43,7 +44,7 @@ class HandlingFee extends AbstractBlock
             ]),
             'grand_total'
         );
-
+        
         return $this;
     }
 }

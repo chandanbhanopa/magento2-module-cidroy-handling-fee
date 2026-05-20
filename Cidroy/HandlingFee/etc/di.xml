@@ -25,4 +25,16 @@
         <plugin name="cidroy_handling_fee_cart_totals_title"
                 type="Cidroy\HandlingFee\Plugin\Block\Cart\TotalsPlugin"/>
     </type>
+    <type name="Magento\Quote\Model\QuoteManagement">
+        <plugin name="cidroy_handling_fee_save_to_order"
+                type="Cidroy\HandlingFee\Plugin\Quote\QuoteManagementPlugin"/>
+    </type>
+    <type name="Magento\Quote\Api\CartTotalRepositoryInterface">
+        <plugin name="cidroy_handling_fee_cart_totals_api"
+                type="Cidroy\HandlingFee\Plugin\Api\CartTotalRepositoryPlugin"/>
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="cidroy_handling_fee_order_api"
+                type="Cidroy\HandlingFee\Plugin\Api\OrderRepositoryPlugin"/>
+    </type>
 </config>

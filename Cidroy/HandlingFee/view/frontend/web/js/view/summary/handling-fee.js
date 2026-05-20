@@ -1,7 +1,9 @@
-console.log("Cart Summery......");
+console.log("Checkout Handling fees ...");
 define([
-    'Cidroy_HandlingFee/js/view/cart/totals/handling-fee'
-], function (Component) {
+    'uiComponent',
+    'Magento_Customer/js/customer-data',
+    'mage/translate'
+], function (Component, customerData, $t) {
     'use strict';
 
     return Component.extend({
@@ -9,9 +11,22 @@ define([
             template: 'Cidroy_HandlingFee/summary/handling-fee'
         },
 
-        /** Show only on the review (full) step, not on the estimate panel. */
+        initialize: function () {
+            this._super();
+            this.cart = customerData.get('cart');
+            return this;
+        },
+
         isDisplayed: function () {
-            return this.isFullMode() && this.getPureValue() !== 0;
+            return parseFloat(this.cart()['handling_fee'] || 0) > 0;
+        },
+
+        getTitle: function () {
+            return this.cart()['handling_fee_label'] || this.config.title || $t('Handling Fee');
+        },
+
+        getValue: function () {
+            return this.cart()['handling_fee_formatted'] || '';
         }
     });
 });

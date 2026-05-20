@@ -27,9 +27,13 @@ class TransferHandlingFeeToOrder implements ObserverInterface
         /** @var Quote $quote */
         $quote = $observer->getEvent()->getQuote();
 
-        $handlingFee     = (float) $quote->getHandlingFee();
-        $baseHandlingFee = (float) $quote->getBaseHandlingFee();
+        // Read from the shipping address: the address value is set during
+        // collect() and survives the re-collect that resets the quote-level fields.
+        $shippingAddress = $quote->getShippingAddress();
+        $handlingFee     = (float) $shippingAddress->getHandlingFee();
+        $baseHandlingFee = (float) $shippingAddress->getBaseHandlingFee();
 
+        
         $order->setHandlingFee($handlingFee);
         $order->setBaseHandlingFee($baseHandlingFee);
 

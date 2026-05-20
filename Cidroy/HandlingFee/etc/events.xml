@@ -5,4 +5,8 @@
         <observer name="cidroy_handling_fee_transfer_to_order"
                   instance="Cidroy\HandlingFee\Observer\TransferHandlingFeeToOrder"/>
     </event>
+    <event name="sales_order_save_commit_after">
+        <observer name="cidroy_handling_fee_sync_to_order_grid"
+                  instance="Cidroy\HandlingFee\Observer\SyncHandlingFeeToOrderGrid"/>
+    </event>
 </config>
